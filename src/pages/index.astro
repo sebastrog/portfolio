@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Profile from '../components/Profile.astro';
+
+import { section } from '../utils/tailwind-styles'
+
+const PROJECTS = [
+	{
+		href: "https://frisby.com.co/",
+		title: "Frisby",
+		body: "Local Restaurant Network",
+		cover: "/frisby-cover.png",
+		tags: "wordpress, sass, jquery."
+	},
+	{
+		href: "https://app.zerostock.co/",
+		title: "ZeroStock",
+		body: "Custom platform for Fulfillment Logistics",
+		cover: "/zerostock-cover.png",
+		tags: "react, next js, material ui."
+	},
+	{
+		href: "https://sebastrog.github.io/avatarcreator/",
+		title: "Avatar Creator JS",
+		body: "Avatar Creator",
+		cover: "/avatar-cover.png",
+		tags: "vanilla javascript, tailwind."
+	}
+]
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<div class={section}>
+			<Profile />
+		</div>
+
+		<div class={`text-white ${section}`}>
+			<h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">PROJECTS</h2>
+			
+			<ul role="list" class="flex flex-cols flex-wrap gap-y-8">
+				{PROJECTS.map(({href, title, body, cover, tags}) => (
+					<Card
+						href={href}
+						title={title}
+						body={body}
+						cover={cover}
+						tags={tags}
+					/>
+				))}
+			</ul>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	
+</style>

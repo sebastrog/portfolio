@@ -1,0 +1,60 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+	cover: string;
+	tags: string;
+}
+
+const { href, title, body, cover, tags } = Astro.props;
+
+const COVER = "[&_img]:rounded-lg [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:duration-300 [&_img]:opacity-80 [&_img]:group-hover:opacity-100";
+---
+
+<li class="w-full group">
+	<div class="flex items-center justify-between bg-black/35 rounded-lg relative z-30">
+		<a 
+			href={href} 
+			target="_blank"
+			class="block py-4 px-6"
+		>
+			<h3 
+				class="font-light text-xl duration-300 hover:text-[#4e846e]"
+			>
+					{title}
+					<span class="inline-block opacity-0 translate-x-0 group-hover:translate-x-1 group-hover:opacity-100 duration-300">&#187;</span>
+			</h3>
+		</a>
+	
+		<div class="rounded-lg w-[270px] h-[70px] p-2">
+			<a 
+				href={href} 
+				target="_blank"
+				class={`block w-full h-full ${COVER}`}
+			>
+				<img
+					src={cover}
+					alt="frisby project image"
+					width="270"
+					height="70"
+				/>
+			</a>
+		</div>
+	</div>
+
+	<div class="flex items-center justify-between bg-black/20 rounded-b-lg relative z-20 -mt-1">
+		<div class="py-4 px-6">
+			<p class="text-sm">{body}</p>
+		</div>
+
+		<div class="w-[270px] flex-none p-2">
+			<div class="flex items-center gap-1">
+				<p class="text-sm">{tags}</p>
+			</div>
+		</div>
+	</div>
+</li>
+<style>
+	
+</style>
