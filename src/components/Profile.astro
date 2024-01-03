@@ -1,27 +1,12 @@
 ---
-import { Debug } from 'astro:components';
+import type { portfolioTypes } from '../utils/portfolio.types';
 
 import Social from './Social.astro';
 import { isProd } from '../utils/envs';
 
-type Social = {
-  title: string;
-  url: string;
-}
+interface Props extends portfolioTypes {}
 
-type profileTypes = {
-  avatar: string;
-	fullName: string;
-	position: string;
-	bio: string;
-	social: Social[];
-}
-
-const response = await fetch('https://659489fc1493b011606a9c42.mockapi.io/api/v1/profile');
-const extract = await response.json();
-const profile : profileTypes = extract[0];
-
-const { avatar, fullName, position, bio, social } = profile;
+const { avatar, fullName, position, bio, social } = Astro.props;
 ---
 
 <div class="md:flex md:gap-12">
@@ -33,7 +18,7 @@ const { avatar, fullName, position, bio, social } = profile;
     />
   </div>
 
-  <div class="text-white">
+  <div class="text-white mt-6 md:mt-0">
     <h1 class="font-medium tracking-[.2rem] text-lg sm:text-2xl md:text-left text-center uppercase">{fullName}</h1>
 
     <div class="text-center sm:flex items-center gap-1 justify-center md:justify-start mb-5">
@@ -41,7 +26,7 @@ const { avatar, fullName, position, bio, social } = profile;
       <span class="font-bold primary-green-text text-xl">&lt;&gt;</span>
     </div>
 
-    {profile && social && (
+    {social && (
       <div class="mb-6">
         <div class="flex items-center gap-2 justify-center md:justify-start">
           {social?.map(({title, url}) => (

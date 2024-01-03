@@ -1,26 +1,25 @@
 ---
+import type { portfolioTypes  } from '../utils/portfolio.types'
+
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Profile from '../components/Profile.astro';
 
 import { section } from '../utils/tailwind-styles'
 
-type projectsType = {
-	title: string;
-	body: string;
-	href: string;
-	cover: string;
-	tags: string;
-}
-
 const response = await fetch('https://659489fc1493b011606a9c42.mockapi.io/api/v1/portfolio');
-const projects : projectsType[] = await response.json();
+const extract = await response.json();
+const porfolio : portfolioTypes = extract[0];
+
+const { projects } = porfolio;
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<div class={`px-4 md:px-0 ${section}`}>
-			<Profile />
+			<Profile 
+				{...porfolio}
+			/>
 		</div>
 
 		<div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
