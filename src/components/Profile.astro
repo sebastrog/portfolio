@@ -1,6 +1,7 @@
 ---
-import { Debug } from 'astro:components';
 import Social from './Social.astro';
+const isProd = import.meta.env.PROD;
+console.log('default envvar', isProd)
 
 type Social = {
 	title: string;
@@ -25,7 +26,7 @@ const { avatar, fullName, position, bio, social } = profile;
 <div class="md:flex md:gap-12">
   <div class="flex-none w-[153px] h-[153px] border-2 primary-green-border bg-[#1e2127] rounded-full p-2 m-auto">
     <img 
-      src={avatar} alt="sebastian castro giraldo" class="object-cover"
+      src={isProd ? `/portfolio/${avatar}` : avatar} alt="sebastian castro giraldo" class="object-cover"
       width="153"
       height="153"
     />
