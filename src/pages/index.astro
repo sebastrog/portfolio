@@ -19,11 +19,11 @@ const projects : projectsType[] = await response.json();
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<div class={section}>
+		<div class={`px-4 md:px-0 ${section}`}>
 			<Profile />
 		</div>
 
-		<div class={`text-white ${section}`}>
+		<div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
 			<h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">PROJECTS</h2>
 			
 			<ul role="list" class="flex flex-cols flex-wrap gap-y-8">
@@ -40,7 +40,3 @@ const projects : projectsType[] = await response.json();
 		</div>
 	</main>
 </Layout>
-
-<style>
-	
-</style>

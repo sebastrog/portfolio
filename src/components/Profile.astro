@@ -1,15 +1,16 @@
 ---
+import { Debug } from 'astro:components';
+
 import Social from './Social.astro';
-const isProd = import.meta.env.PROD;
-console.log('default envvar', isProd)
+import { isProd } from '../utils/envs';
 
 type Social = {
-	title: string;
+  title: string;
   url: string;
 }
 
 type profileTypes = {
-	avatar: string;
+  avatar: string;
 	fullName: string;
 	position: string;
 	bio: string;
