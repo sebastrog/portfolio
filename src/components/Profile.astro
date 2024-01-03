@@ -1,28 +1,25 @@
 ---
-import Social from './Social.astro'
+import { Debug } from 'astro:components';
+import Social from './Social.astro';
 
-const PROFILE = {
-  avatar: "/sebastian-castro-giraldo.png",
-  fullName: "sebastian castro giraldo",
-  position: "front end developer",
-  bio: "Frontend Developer with more than 5 years of experience. I enjoy collaborating with teams to develop incredible web applications and learning new things to improve myself.",
-  social: [
-    {
-      title: "linkedin",
-      url: "https://www.linkedin.com/in/sebastrog/"
-    },
-    {
-      title: "github",
-      url: "https://github.com/sebastrog"
-    },
-    {
-      title: "twitter",
-      url: "https://twitter.com/sebastrog"
-    },
-  ]
+type Social = {
+	title: string;
+  url: string;
 }
 
-const { avatar, fullName, position, bio, social } = PROFILE;
+type profileTypes = {
+	avatar: string;
+	fullName: string;
+	position: string;
+	bio: string;
+	social: Social[];
+}
+
+const response = await fetch('https://659489fc1493b011606a9c42.mockapi.io/api/v1/profile');
+const extract = await response.json();
+const profile : profileTypes = extract[0];
+
+const { avatar, fullName, position, bio, social } = profile;
 ---
 
 <div class="md:flex md:gap-12">
@@ -42,7 +39,7 @@ const { avatar, fullName, position, bio, social } = PROFILE;
       <span class="font-bold primary-green-text text-xl">&lt;&gt;</span>
     </div>
 
-    {social && (
+    {profile && social && (
       <div class="mb-6">
         <div class="flex items-center gap-2 justify-center md:justify-start">
           {social?.map(({title, url}) => (

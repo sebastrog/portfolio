@@ -5,29 +5,16 @@ import Profile from '../components/Profile.astro';
 
 import { section } from '../utils/tailwind-styles'
 
-const PROJECTS = [
-	{
-		href: "https://frisby.com.co/",
-		title: "Frisby",
-		body: "Local Restaurant Network",
-		cover: "/frisby-cover.png",
-		tags: "wordpress, sass, jquery."
-	},
-	{
-		href: "https://app.zerostock.co/",
-		title: "ZeroStock",
-		body: "Custom platform for Fulfillment Logistics",
-		cover: "/zerostock-cover.png",
-		tags: "react, next js, material ui."
-	},
-	{
-		href: "https://sebastrog.github.io/avatarcreator/",
-		title: "Avatar Creator JS",
-		body: "Avatar Creator",
-		cover: "/avatar-cover.png",
-		tags: "vanilla javascript, tailwind."
-	}
-]
+type projectsType = {
+	title: string;
+	body: string;
+	href: string;
+	cover: string;
+	tags: string;
+}
+
+const response = await fetch('https://659489fc1493b011606a9c42.mockapi.io/api/v1/portfolio');
+const projects : projectsType[] = await response.json();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -40,7 +27,7 @@ const PROJECTS = [
 			<h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">PROJECTS</h2>
 			
 			<ul role="list" class="flex flex-cols flex-wrap gap-y-8">
-				{PROJECTS.map(({href, title, body, cover, tags}) => (
+				{projects.map(({href, title, body, cover, tags}) => (
 					<Card
 						href={href}
 						title={title}
