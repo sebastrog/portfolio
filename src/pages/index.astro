@@ -1,41 +1,82 @@
 ---
-import type { portfolioTypes  } from '../utils/portfolio.types'
+import type { portfolioTypes } from "../utils/portfolio.types";
 
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Profile from '../components/Profile.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Profile from "../components/Profile.astro";
 
-import { section } from '../utils/tailwind-styles'
+import { section } from "../utils/tailwind-styles";
 
-const response = await fetch('https://659489fc1493b011606a9c42.mockapi.io/api/v1/portfolio');
+const response = await fetch(
+  "https://659489fc1493b011606a9c42.mockapi.io/api/v1/portfolio"
+);
 const extract = await response.json();
-const porfolio : portfolioTypes = extract[0];
+const porfolio: portfolioTypes = extract[0];
 
 const { projects } = porfolio;
 ---
 
 <Layout title="Portfolio - Sebastian Castro Giraldo - Front End Developer">
-	<main>
-		<div class={`px-4 md:px-0 ${section}`}>
-			<Profile 
-				{...porfolio}
-			/>
-		</div>
+  <main>
+    <div class={`px-4 md:px-0 ${section}`}>
+      <Profile {...porfolio} />
+    </div>
 
-		<div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
-			<h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">PROJECTS</h2>
-			
-			<ul role="list" class="flex flex-cols flex-wrap gap-y-8">
-				{projects.map(({href, title, body, cover, tags}) => (
-					<Card
-						href={href}
-						title={title}
-						body={body}
-						cover={cover}
-						tags={tags}
-					/>
-				))}
-			</ul>
-		</div>
-	</main>
+    <div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
+      <h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">
+        PROJECTS
+      </h2>
+
+      <ul role="list" class="flex flex-cols flex-wrap gap-y-8">
+        {
+          projects.map(({ href, title, body, cover, tags }) => (
+            <Card
+              href={href}
+              title={title}
+              body={body}
+              cover={cover}
+              tags={tags}
+            />
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
+      <h2 class="tracking-[.2rem] font-light text-md sm:text-lg mb-5">
+        EXPERIENCIE
+      </h2>
+
+      <ul>
+        <li class="border-l-2 border-[#4e846e] pl-5 relative group pb-10">
+					<span class="absolute w-2 h-2 rounded-full bg-[#4e846e] top-4 -left-[0.325rem] group-hover:left-1 duration-300"></span>
+          <h3
+            class="font-light duration-300 text-left"
+          >
+						Superstaff, Medellín: Front End Developer
+          </h3>
+					<p class="text-sm italic text-white/75 mb-4">Dic 2023 - PRESENT</p>
+					<p class="text-sm mb-1">Contributed significantly to the development and maintenance of a web application Portal Service, a platform dedicated to ticket management. Utilized a tech stack that includes React, TypeScript, and Laravel PHP to implement new features and improve user experience. Worked closely with the development team to design efficient and technical solutions, demonstrating a strong ability to adapt and innovate in a dynamic environment.</p>
+        </li>
+        <li class="border-l-2 border-[#4e846e] pl-5 relative group pb-10">
+					<span class="absolute w-2 h-2 rounded-full bg-[#4e846e] top-4 -left-[0.325rem] group-hover:left-1 duration-300"></span>
+          <h3
+            class="font-light duration-300 text-left"
+          >
+						Publicize, Medellín: Front End Developer
+          </h3>
+					<p class="text-sm italic text-white/75 mb-4">Jan 2019 - Dic 2023</p>
+					<p class="text-sm mb-1">Contributed the development and maintenance of applications using React JS, implementing new features and functionalities to meet the specific requirements of diverse clients. Translated the design team's UX wireframes and mockups into responsive and interactive features, utilizing HTML, CSS, and JavaScript. </p>
+        </li>
+        <li class="border-l-2 border-[#4e846e] pl-5 relative group pb-2">
+					<span class="absolute w-2 h-2 rounded-full bg-[#4e846e] top-4 -left-[0.325rem] group-hover:left-1 duration-300"></span>
+          <h3 class="font-light duration-300 text-left">
+						Webprogramo, Medellín: Front End Developer
+          </h3>
+					<p class="text-sm italic text-white/75 mb-4">Jun 2015 - Jan 2019</p>
+					<p class="text-sm mb-1">Played a crucial role in transforming mock-ups into fully functional websites using HTML, CSS, and JavaScript (jQuery). This role marked the beginning of a deep dive into web development, where quickly grasped new concepts and skills taught by the team.</p>
+        </li>
+      </ul>
+    </div>
+  </main>
 </Layout>
