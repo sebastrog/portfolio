@@ -9,6 +9,7 @@ export type Project = {
 	href: string;
 	cover: string;
 	tags: string;
+	id: string;
 }
 
 export type portfolioTypes = {

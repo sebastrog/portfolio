@@ -7,19 +7,71 @@ import Profile from "../components/Profile.astro";
 
 import { section } from "../utils/tailwind-styles";
 
-const response = await fetch(
-  "https://659489fc1493b011606a9c42.mockapi.io/api/v1/portfolio"
-);
-const extract = await response.json();
-const porfolio: portfolioTypes = extract[0];
+const portfolio: portfolioTypes = {
+  "avatar": "avatar.jpg",
+  "fullName": "sebastian castro giraldo",
+  "position": "front end developer",
+  "bio": "Frontend Developer with more than 5 years of experience. Enjoys collaborating with teams to develop incredible web applications and has a strong desire to learn and improve skills.",
+  "social": [
+    {
+      "title": "linkedin",
+      "url": "https://www.linkedin.com/in/sebastrog/"
+    },
+    {
+      "title": "github",
+      "url": "https://github.com/sebastrog"
+    }
+  ],
+  'projects': [
+    {
+      "href": "https://playgreen-sports-cf485.web.app/",
+      "title": "PlayGreen App",
+      "body": "Sports application using ReactJS, consuming an API to fetch random sports photos and implementing a like and dislike functionality.",
+      "cover": "playgreensports-cover.jpg",
+      "tags": "react js, vite, firebase, firestore, styled components, axios",
+      "id": "5"
+    },
+    {
+      "href": "https://sebastrog.github.io/tickets-creator/",
+      "title": "Tickets Creator React js",
+      "body": "Submit tickets and set a difficulty for them (generation of gifs according to the difficulty)",
+      "cover": "tickets-creator-cover.png",
+      "tags": "react js, vite, formik, yup, tailwind, giphy",
+      "id": "1"
+    },
+    {
+      "href": "https://sebastrog.github.io/avatarcreator/",
+      "title": "Avatar Creator JS",
+      "body": "Build your own avatar and download it!",
+      "cover": "avatar-cover.png",
+      "tags": "vanilla javascript, tailwind.",
+      "id": "2"
+    },
+    {
+      "href": "https://app.zerostock.co/",
+      "title": "ZeroStock",
+      "body": "Custom platform for Fulfillment Logistics",
+      "cover": "zerostock-cover.png",
+      "tags": "react, next js, material ui.",
+      "id": "3"
+    },
+    {
+      "href": "https://frisby.com.co/",
+      "title": "Frisby",
+      "body": "Local Restaurant Network",
+      "cover": "frisby-cover.png",
+      "tags": "wordpress, sass, jquery.",
+      "id": "4"
+    }
+  ]
+}
 
-const { projects } = porfolio;
 ---
 
 <Layout title="Portfolio - Sebastian Castro Giraldo - Front End Developer">
   <main>
     <div class={`px-4 md:px-0 ${section}`}>
-      <Profile {...porfolio} />
+      <Profile {...portfolio} />
     </div>
 
     <div class={`text-white pb-10 md:pb-0 px-4 md:px-0 ${section}`}>
@@ -29,7 +81,7 @@ const { projects } = porfolio;
 
       <ul role="list" class="flex flex-cols flex-wrap gap-y-8">
         {
-          projects.map(({ href, title, body, cover, tags }) => (
+          portfolio.projects.map(({ href, title, body, cover, tags }) => (
             <Card
               href={href}
               title={title}
