@@ -1,1 +1,0 @@
-export const section = "md:w-[650px] m-auto min-h-screen grid place-content-center";
