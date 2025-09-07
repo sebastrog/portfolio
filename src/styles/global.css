@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-ibm);
+}
+
+.textMuted {
+  @apply text-white/80 text-sm font-light;
+}

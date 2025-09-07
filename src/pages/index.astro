@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import Experiencie from "../components/ExperiencieItem.astro";
+import CatWorking from "../assets/catworking.gif";
+---
+
+<Layout>
+  <div class="main w-full h-full flex items-center justify-center">
+    <div class="container max-w-[630px] m-auto">
+      <div class="p-8">
+        <div class="space-y-10">
+          <div class="space-y-2 relative">
+            <div
+              class="lg:absolute lg:-left-[100px] lg:top-0 flex-none w-[80px] h-[80px] border-2 border-[#4e846e] rounded-full
+            p-1 [&_img]:w-full [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover mb-2"
+            >
+              <Image src={CatWorking} alt="A working cat." />
+            </div>
+
+            <h1 class="text-xl font-normal">SEBASTIAN CASTRO GIRALDO</h1>
+            <h2 class="textMuted">
+              Frontend Developer | TALL Stack (Full Stack) Developer | React,
+              TypeScript, Laravel, Livewire, Tailwind | Testing with Pest
+            </h2>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-lg opacity-30">EXPERIENCIE</h3>
+
+            <ul class="space-y-8">
+              <li>
+                <Experiencie
+                  current={true}
+                  brandColor="text-[#E31762]"
+                  place="Sensoria"
+                  fromto="Feb 2025 -"
+                  description="Developed and maintained web solutions with the TALL stack (Tailwind CSS, Alpine.js, Laravel, Livewire). Worked on database modeling and Laravel Eloquent models, and used Filament to build custom admin panels and workflows. Wrote tests with Pest (built on PHPUnit) to ensure reliable features in Livewire and Laravel. Delivered features in collaboration with designers and backend teams, creating clear workflows and stable results."
+                />
+              </li>
+
+              <li>
+                <Experiencie
+                  brandColor="text-[#245097]"
+                  place="Superstaff"
+                  fromto="Dec 2023 - Feb 2025"
+                  description="Maintained and improved an existing React and TypeScript codebase for Portal Service, a ticket management platform. Implemented new features, fixed issues, and collaborated with backend developers using Laravel."
+                />
+              </li>
+
+              <li>
+                <Experiencie
+                  brandColor="text-[#35a4ff]"
+                  place="Publicize"
+                  fromto="Jan 2019 - Dec 2023"
+                  description="Worked as a React JS developer, turning UX/UI designs into responsive features for two main products: an outreach tool for managing and sending mass emails, and a client dashboard for tracking article progress and campaign results. Focused on component development and ensuring responsive layouts."
+                />
+              </li>
+
+              <li>
+                <Experiencie
+                  brandColor="text-amber-200"
+                  place="Webprogramo"
+                  fromto="Jun 2015 - Jan 2019"
+                  description="Worked as a Front End Developer creating websites with HTML, CSS, JavaScript, and jQuery. As my first professional role, it provided strong foundations in web development and allowed me to learn quickly in a collaborative environment."
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-3 md:space-y-1">
+            <div class="flex flex-wrap items-center">
+              <h5 class="textMuted !text-xs">Frontend:</h5>
+              <ul
+                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+              >
+                <li>"React JS",</li>
+                <li>"TypeScript",</li>
+                <li>"Tailwind CSS",</li>
+                <li>"Material UI",</li>
+                <li>"SASS"</li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap items-center">
+              <h5 class="textMuted !text-xs">Backend:</h5>
+              <ul
+                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+              >
+                <li>"Laravel",</li>
+                <li>"Livewire",</li>
+                <li>"Filament"</li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap items-center">
+              <h5 class="textMuted !text-xs">Testing:</h5>
+              <ul
+                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+              >
+                <li>"Pest (Laravel, Livewire, Filament)"</li>
+              </ul>
+            </div>
+
+            <div class="flex items-center">
+              <h5 class="textMuted !text-xs">Other:</h5>
+              <ul
+                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+              >
+                <li>"Git",</li>
+                <li>"Agile teamwork",</li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap items-center">
+              <h5 class="textMuted !text-xs">Exploring:</h5>
+              <ul
+                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+              >
+                <li>"React Native",</li>
+                <li>"Jest (Testing)"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

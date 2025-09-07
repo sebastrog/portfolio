@@ -1,0 +1,14 @@
+---
+const { current, brandColor, place, fromto, description } = Astro.props;
+---
+
+<h4 class={`${brandColor} font-medium`}>{place}</h4>
+<div class="flex items-center gap-2">
+  <p class="text-xs">{fromto}</p>
+  <span
+    class={`w-2 h-2 rounded-full ${current ? "bg-green-300 animate-pulse" : "bg-gray-400 opacity-20"} `}
+  ></span>
+</div>
+<p class="textMuted !text-xs mt-2">
+  {description}
+</p>
