@@ -5,6 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://sebastrog.github.io",
+  base: "/portfolio",
   experimental: {
     fonts: [
       {
