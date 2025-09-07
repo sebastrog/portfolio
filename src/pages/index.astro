@@ -6,19 +6,30 @@ import CatWorking from "../assets/catworking.gif";
 ---
 
 <Layout>
-  <div class="main w-full h-full flex items-center justify-center">
-    <div class="container max-w-[630px] m-auto">
+  <div class="absolute top-5 right-5">
+    <button
+      class="text-black dark:text-white cursor-pointer"
+      id="themeMode"
+      aria-label="Toggle theme"
+    >
+    </button>
+  </div>
+
+  <div class="w-full flex items-center justify-center">
+    <div class="container max-w-[630px] m-auto pt-10 mb-20">
       <div class="p-8">
         <div class="space-y-10">
           <div class="space-y-2 relative">
             <div
-              class="lg:absolute lg:-left-[100px] lg:top-0 flex-none w-[80px] h-[80px] border-2 border-[#4e846e] rounded-full
+              class="lg:absolute lg:-left-[90px] lg:top-0 flex-none w-[80px] h-[80px] rounded-full
             p-1 [&_img]:w-full [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover mb-2"
             >
               <Image src={CatWorking} alt="A working cat." />
             </div>
 
-            <h1 class="text-xl font-normal">SEBASTIAN CASTRO GIRALDO</h1>
+            <h1 class="text-xl font-normal dark:text-white">
+              SEBASTIAN CASTRO GIRALDO
+            </h1>
             <h2 class="textMuted">
               Frontend Developer | TALL Stack (Full Stack) Developer | React,
               TypeScript, Laravel, Livewire, Tailwind | Testing with Pest
@@ -59,7 +70,7 @@ import CatWorking from "../assets/catworking.gif";
 
               <li>
                 <Experiencie
-                  brandColor="text-amber-200"
+                  brandColor="text-yellow-500"
                   place="Webprogramo"
                   fromto="Jun 2015 - Jan 2019"
                   description="Worked as a Front End Developer creating websites with HTML, CSS, JavaScript, and jQuery. As my first professional role, it provided strong foundations in web development and allowed me to learn quickly in a collaborative environment."
@@ -72,7 +83,7 @@ import CatWorking from "../assets/catworking.gif";
             <div class="flex flex-wrap items-center">
               <h5 class="textMuted !text-xs">Frontend:</h5>
               <ul
-                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+                class="text-xs dark:text-white flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
               >
                 <li>"React JS",</li>
                 <li>"TypeScript",</li>
@@ -85,7 +96,7 @@ import CatWorking from "../assets/catworking.gif";
             <div class="flex flex-wrap items-center">
               <h5 class="textMuted !text-xs">Backend:</h5>
               <ul
-                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+                class="text-xs flex gap-1 items-center dark:text-white flex-wrap before:content-['['] after:content-[']']"
               >
                 <li>"Laravel",</li>
                 <li>"Livewire",</li>
@@ -96,7 +107,7 @@ import CatWorking from "../assets/catworking.gif";
             <div class="flex flex-wrap items-center">
               <h5 class="textMuted !text-xs">Testing:</h5>
               <ul
-                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+                class="text-xs flex gap-1 items-center dark:text-white flex-wrap before:content-['['] after:content-[']']"
               >
                 <li>"Pest (Laravel, Livewire, Filament)"</li>
               </ul>
@@ -105,7 +116,7 @@ import CatWorking from "../assets/catworking.gif";
             <div class="flex items-center">
               <h5 class="textMuted !text-xs">Other:</h5>
               <ul
-                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+                class="text-xs flex gap-1 items-center dark:text-white flex-wrap before:content-['['] after:content-[']']"
               >
                 <li>"Git",</li>
                 <li>"Agile teamwork",</li>
@@ -115,7 +126,7 @@ import CatWorking from "../assets/catworking.gif";
             <div class="flex flex-wrap items-center">
               <h5 class="textMuted !text-xs">Exploring:</h5>
               <ul
-                class="text-xs flex gap-1 items-center flex-wrap before:content-['['] after:content-[']']"
+                class="text-xs flex gap-1 items-center dark:text-white flex-wrap before:content-['['] after:content-[']']"
               >
                 <li>"React Native",</li>
                 <li>"Jest (Testing)"</li>

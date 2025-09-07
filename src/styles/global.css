@@ -4,6 +4,8 @@
   --font-sans: var(--font-ibm);
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .textMuted {
-  @apply text-white/80 text-sm font-light;
+  @apply text-gray-600 dark:text-white/80 text-sm font-light;
 }
