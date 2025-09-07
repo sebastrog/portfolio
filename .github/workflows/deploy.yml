@@ -1,4 +1,4 @@
-name: Deploy Astro to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -10,22 +10,15 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
-        with:
-          path: .
-          node-version: 20
-          package-manager: yarn@1.25.1
+        uses: withastro/action@v3
 
   deploy:
     needs: build
