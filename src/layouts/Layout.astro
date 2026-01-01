@@ -33,7 +33,7 @@ import "../styles/global.css";
     </script>
   </head>
   <body
-    class="bg-white dark:bg-[#3f3e3e] transition-colors duration-300 relative"
+    class="bg-white dark:bg-[#1a1a2e] transition-colors duration-300 relative"
   >
     <slot />
   </body>
@@ -51,8 +51,40 @@ import "../styles/global.css";
 </style>
 
 <script>
+  const translations = {
+    en: {
+      yearsOfCoding: "// years of coding",
+      testingWith: "Testing with Pest",
+      sensoria:
+        "Built and maintained solutions with Tailwind, Alpine.js, Laravel, and Livewire; worked on database models, custom admin panels with Filament, and tested features with Pest for reliable workflows.",
+      superstaff:
+        "Maintained and improved a ticket management platform, adding features, fixing issues, and collaborating with Laravel backend developers.",
+      publicize:
+        "Translated UX/UI into responsive features for an outreach tool and client dashboard, focusing on components and layout responsiveness.",
+      webprogramo:
+        "First role using HTML, CSS, JavaScript, and jQuery; built strong web development foundations.",
+      designedBy: "Designed & developed by",
+    },
+    es: {
+      yearsOfCoding: "// años programando",
+      testingWith: "Testing con Pest",
+      sensoria:
+        "Construí y mantuve soluciones con Tailwind, Alpine.js, Laravel y Livewire; trabajé en modelos de base de datos, paneles de administración personalizados con Filament, e implementé testing con Pest para asegurar flujos de trabajo confiables.",
+      superstaff:
+        "Mantuve y mejoré una plataforma de gestión de tickets, agregando funcionalidades, corrigiendo errores y colaborando con desarrolladores backend de Laravel.",
+      publicize:
+        "Transformé diseños UX/UI en funcionalidades responsive para una plataforma de outreach y dashboard de clientes, enfocándome en componentes y diseño responsive.",
+      webprogramo:
+        "Primer rol usando HTML, CSS, JavaScript y jQuery; construí bases sólidas en desarrollo web.",
+      designedBy: "Diseñado y desarrollado por",
+    },
+  };
+
   document.addEventListener("DOMContentLoaded", function () {
     const themeMode = document.getElementById("themeMode");
+    const themeModeText = document.getElementById("themeModeText");
+    const langMode = document.getElementById("langMode");
+    const langModeText = document.getElementById("langModeText");
     const html = document.documentElement;
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -60,29 +92,65 @@ import "../styles/global.css";
       const saved = localStorage.getItem("portfolioThemeMode");
       if (!saved) {
         const newTheme = e.matches ? "dark" : "light";
-        html.className = newTheme;
+        html.className = html.className.replace(/light|dark/, newTheme);
         updateThemeButton(newTheme);
       }
     });
 
     function updateThemeButton(currentTheme: string) {
-      if (themeMode) {
+      if (themeModeText) {
         const isDark = currentTheme === "dark";
-        themeMode.innerText = isDark ? "light" : "dark";
+        themeModeText.innerText = isDark ? "light" : "dark";
+      }
+    }
+
+    function getCurrentLang(): "en" | "es" {
+      return (localStorage.getItem("portfolioLang") as "en" | "es") || "en";
+    }
+
+    function applyTranslations(lang: "en" | "es") {
+      const t = translations[lang];
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n") as keyof typeof t;
+        if (t[key]) {
+          el.textContent = t[key];
+        }
+      });
+      html.setAttribute("lang", lang);
+    }
+
+    function updateLangButton(lang: "en" | "es") {
+      if (langModeText) {
+        langModeText.innerText = lang === "en" ? "es" : "en";
       }
     }
 
     const currentTheme = html.classList.contains("dark") ? "dark" : "light";
     updateThemeButton(currentTheme);
 
+    const currentLang = getCurrentLang();
+    applyTranslations(currentLang);
+    updateLangButton(currentLang);
+
     if (themeMode) {
       themeMode.addEventListener("click", () => {
         const isDark = html.classList.contains("dark");
         const newTheme = isDark ? "light" : "dark";
 
-        html.className = newTheme;
+        html.className = html.className.replace(/light|dark/, newTheme);
         localStorage.setItem("portfolioThemeMode", newTheme);
         updateThemeButton(newTheme);
+      });
+    }
+
+    if (langMode) {
+      langMode.addEventListener("click", () => {
+        const currentLang = getCurrentLang();
+        const newLang = currentLang === "en" ? "es" : "en";
+
+        localStorage.setItem("portfolioLang", newLang);
+        applyTranslations(newLang);
+        updateLangButton(newLang);
       });
     }
   });

@@ -1,0 +1,109 @@
+---
+const experiences = [
+  {
+    company: "Sensoria",
+    role: "TALL Stack Developer",
+    period: "Feb 2025 - Present",
+    description:
+      "Built and maintained solutions with Tailwind, Alpine.js, Laravel, and Livewire; worked on database models, custom admin panels with Filament, and tested features with Pest for reliable workflows.",
+    i18nKey: "sensoria",
+    isActive: true,
+  },
+  {
+    company: "Superstaff",
+    role: "React & TypeScript Developer",
+    period: "Dec 2023 - Feb 2025",
+    description:
+      "Maintained and improved a ticket management platform, adding features, fixing issues, and collaborating with Laravel backend developers.",
+    i18nKey: "superstaff",
+    isActive: false,
+  },
+  {
+    company: "Publicize",
+    role: "React JS Developer",
+    period: "Jan 2019 - Dec 2023",
+    description:
+      "Translated UX/UI into responsive features for an outreach tool and client dashboard, focusing on components and layout responsiveness.",
+    i18nKey: "publicize",
+    isActive: false,
+  },
+  {
+    company: "Webprogramo",
+    role: "Front End Developer",
+    period: "Jun 2015 - Jan 2019",
+    description:
+      "First role using HTML, CSS, JavaScript, and jQuery; built strong web development foundations.",
+    i18nKey: "webprogramo",
+    isActive: false,
+  },
+];
+---
+
+<section id="experience" class="py-24 px-6 bg-white dark:bg-[#1a1a2e]">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-16">
+      <p class="font-mono text-sm text-gray-400 dark:text-gray-500 mb-2">
+        <span class="syntax-comment">{"// "}</span>
+        <span class="syntax-pink">const</span>{" "}
+        <span class="syntax-cyan">experience</span>{" "}
+        <span class="text-gray-400 dark:text-gray-500">=</span>
+      </p>
+      <h2 class="text-3xl font-mono font-bold">
+        <span class="syntax-yellow">{"{"}</span>
+        <span class="text-gray-800 dark:text-white"> experience </span>
+        <span class="syntax-yellow">{"}"}</span>
+      </h2>
+    </div>
+
+    <div class="relative">
+      <div
+        class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#50fa7b] via-[#8be9fd] to-transparent"
+      >
+      </div>
+
+      <div class="space-y-12">
+        {
+          experiences.map((exp) => (
+            <div class="relative pl-8">
+              <div
+                class={`absolute left-0 top-2 -translate-x-1/2 w-3 h-3 rounded-full border-2 ${
+                  exp.isActive
+                    ? "bg-[#50fa7b] border-[#50fa7b] shadow-lg shadow-[#50fa7b]/50"
+                    : "bg-white dark:bg-[#1a1a2e] border-gray-400 dark:border-gray-500"
+                }`}
+              >
+                {exp.isActive && (
+                  <span class="absolute inset-0 rounded-full bg-[#50fa7b] animate-ping opacity-50" />
+                )}
+              </div>
+              <div class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-6 transition-all duration-300 group hover:border-[#21c45d]">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 class="font-mono text-xl font-semibold text-gray-800 dark:text-white group-hover:text-[#21c45d] transition-colors">
+                      {exp.company}
+                    </h3>
+                    <p class="font-mono text-sm text-[#0891b2] dark:text-[#8be9fd]">
+                      {exp.role}
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2 font-mono text-sm text-gray-500 dark:text-gray-400">
+                    <span>{exp.period}</span>
+                    {exp.isActive && (
+                      <span class="w-2 h-2 rounded-full bg-[#50fa7b] animate-pulse" />
+                    )}
+                  </div>
+                </div>
+                <p
+                  class="text-gray-600 dark:text-gray-400 font-sans leading-relaxed"
+                  data-i18n={exp.i18nKey}
+                >
+                  {exp.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
