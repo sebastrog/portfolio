@@ -2,10 +2,11 @@
 interface Props {
   id: string;
   title: string;
+  titleKey?: string;
   isDefault?: boolean;
 }
 
-const { id, title, isDefault = false } = Astro.props;
+const { id, title, titleKey, isDefault = false } = Astro.props;
 ---
 
 <div id={id} class={`window ${isDefault ? "active" : ""}`} data-window={id}>
@@ -17,8 +18,9 @@ const { id, title, isDefault = false } = Astro.props;
         aria-label="Close window"
       >
       </button>
-      <span class="ml-4 font-mono text-sm text-gray-500 dark:text-gray-400"
-        >{title}</span
+      <span
+        class="ml-4 font-mono text-sm text-gray-500 dark:text-gray-400"
+        data-i18n={titleKey}>{title}</span
       >
     </div>
     <div class="window-content bg-white dark:bg-[#1a1a2e]">

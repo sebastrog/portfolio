@@ -1,0 +1,77 @@
+---
+import Window from "./Window.astro";
+import ZerostockLogotype from "./logos/ZerostockLogotype.astro";
+
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  logo: string;
+  i18nKey: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "ZeroStock",
+    description:
+      "B2B logistics and e-commerce platform that connects Shops, Providers, Fulfillment operators, and Transporters. Features marketplace, multi-step billing wizard, real-time order tracking, role-based access, warehouse management, and financial system with entity wallets.",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "SWR",
+      "Formik",
+      "Yup",
+      "Vitest",
+      "React Testing Library",
+      "Laravel",
+    ],
+    logo: "zerostock",
+    i18nKey: "zerostock",
+  },
+];
+---
+
+<Window id="projects" title="projects" titleKey="windowProjects">
+  <div class="space-y-6">
+    {
+      projects.map((project) => (
+        <div class="flex flex-col sm:flex-row gap-6 p-5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl">
+          <div class="flex-shrink-0 flex items-start justify-center sm:justify-start">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-white dark:bg-white/10 rounded-xl border border-gray-200 dark:border-white/10">
+              {project.logo === "zerostock" && (
+                <ZerostockLogotype
+                  size={40}
+                  class="text-gray-800 dark:text-white"
+                />
+              )}
+            </div>
+          </div>
+
+          <div class="flex-1 space-y-3">
+            <h3 class="font-mono text-lg font-semibold text-gray-800 dark:text-white">
+              {project.title}
+            </h3>
+
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              data-i18n={project.i18nKey}
+            >
+              {project.description}
+            </p>
+
+            <div class="flex flex-wrap gap-1.5">
+              {project.technologies.map((tech) => (
+                <span class="px-2 py-0.5 text-xs font-mono bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Window>
