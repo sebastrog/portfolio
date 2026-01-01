@@ -1,4 +1,6 @@
 ---
+import Window from "./Window.astro";
+
 const skillCategories = [
   {
     name: "frontend",
@@ -28,45 +30,18 @@ const skillCategories = [
 ];
 ---
 
-<section id="skills" class="py-24 px-6 bg-gray-50 dark:bg-[#1a1a2e]">
-  <div class="max-w-4xl mx-auto">
-    <div class="mb-16">
-      <p class="font-mono text-sm text-gray-400 dark:text-gray-500 mb-2">
-        <span class="syntax-comment">{"// "}</span>
-        <span class="syntax-pink">const</span>{" "}
-        <span class="syntax-cyan">skills</span>{" "}
-        <span class="text-gray-400 dark:text-gray-500">=</span>
+<Window id="skills" title="skills.ts">
+  <div class="font-mono text-sm">
+    <div class="space-y-4">
+      <p class="text-gray-400 dark:text-gray-500">
+        <span class="line-number">1</span>
+        <span class="syntax-pink">interface</span>{" "}
+        <span class="syntax-yellow">Skills</span>{" "}
+        <span class="text-gray-400 dark:text-gray-500">{"{"}</span>
       </p>
-      <h2 class="text-3xl font-mono font-bold">
-        <span class="syntax-yellow">{"{"}</span>
-        <span class="text-gray-800 dark:text-white"> skills </span>
-        <span class="syntax-yellow">{"}"}</span>
-      </h2>
-    </div>
 
-    <div
-      class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-6 font-mono text-sm"
-    >
-      <div
-        class="flex items-center gap-2 mb-6 pb-4 border-b border-gray-200 dark:border-white/10"
-      >
-        <div class="flex gap-1.5">
-          <span class="w-3 h-3 rounded-full bg-[#ff5f56]"></span>
-          <span class="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
-          <span class="w-3 h-3 rounded-full bg-[#27c93f]"></span>
-        </div>
-        <span class="text-gray-400 dark:text-gray-500 ml-4">skills.ts</span>
-      </div>
-
-      <div class="space-y-4">
-        <p class="text-gray-400 dark:text-gray-500">
-          <span class="line-number">1</span>
-          <span class="syntax-pink">interface</span>{" "}
-          <span class="syntax-yellow">Skills</span>{" "}
-          <span class="text-gray-400 dark:text-gray-500">{"{"}</span>
-        </p>
-
-        {skillCategories.map((category, catIndex) => (
+      {
+        skillCategories.map((category, catIndex) => (
           <div class="pl-4">
             <p class="text-gray-400 dark:text-gray-500">
               <span class="line-number">{catIndex + 2}</span>
@@ -91,14 +66,13 @@ const skillCategories = [
               )}
             </p>
           </div>
-        ))}
+        ))
+      }
 
-        <p class="text-gray-400 dark:text-gray-500">
-          <span class="line-number">7</span>
-          <span class="text-gray-400 dark:text-gray-500">{"}"}</span>
-        </p>
-      </div>
+      <p class="text-gray-400 dark:text-gray-500">
+        <span class="line-number">7</span>
+        <span class="text-gray-400 dark:text-gray-500">{"}"}</span>
+      </p>
     </div>
   </div>
-</section>
-
+</Window>

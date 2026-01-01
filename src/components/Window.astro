@@ -1,0 +1,28 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  isDefault?: boolean;
+}
+
+const { id, title, isDefault = false } = Astro.props;
+---
+
+<div id={id} class={`window ${isDefault ? "active" : ""}`} data-window={id}>
+  <div class="window-chrome">
+    <div class="window-titlebar">
+      <button
+        class="w-3 h-3 rounded-full bg-[#ff5f56] hover:brightness-110 transition-all cursor-pointer window-close"
+        data-close-window={id}
+        aria-label="Close window"
+      >
+      </button>
+      <span class="ml-4 font-mono text-sm text-gray-500 dark:text-gray-400"
+        >{title}</span
+      >
+    </div>
+    <div class="window-content bg-white dark:bg-[#1a1a2e]">
+      <slot />
+    </div>
+  </div>
+</div>
